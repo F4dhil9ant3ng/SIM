@@ -20,7 +20,7 @@ if (isset ( $_POST ['edit'] ) && isset ( $_POST ['user'] )) {
 	echo "<form method=\"post\"><input type=\"submit\" name=\"add\" value=\"Tambah\" id=\"addbutton\" ></form>";
 }
 
-$usersql="select * from users where user_id<>'1' order by user_id desc";
+$usersql="select * from users where user_id!='1' order by user_id desc";
 $userq=$conn->query($usersql);
 if ($userq->num_rows == 0) {
 	$msg = "Belum ada data!";
@@ -31,7 +31,7 @@ if ($userq->num_rows == 0) {
 		<tr class="tabheader">
 			<!-- header baris pertama -->
 			<th>Username</th>
-			<th>Nama<br>Lengkap</th>
+			<th>Nama Lengkap</th>
 			<th>Aksi</th>
 		</tr>
 	</thead>
