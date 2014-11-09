@@ -151,7 +151,7 @@ function cash_edit_form($conn) {
 // action::cash::del BEGIN
 function cash_del($conn){
 	$cash_id = $_POST ['cash_id'];
-	$sql = "delete from transactions where cash_id='$cash_id'";
+	$sql = "delete from cash where cash_id='$cash_id'";
 	if ($conn->query ( $sql )) {
 		$msg = "Data dengan nomor transaksi " . $cash_id . " telah dihapus dari basisdata";
 	} else {

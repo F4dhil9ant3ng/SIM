@@ -1,5 +1,6 @@
 <?php
-if (isset ( $_POST ['dele'] ) && isset ( $_POST ['trans_id'] )) {   //edit data
+// var_dump($_POST);
+if (isset ( $_POST ['dele'] ) && isset ( $_POST ['cash_id'] )) {   //edit data
 	$msg=cash_del($conn);
 }
 if (isset ( $_POST ['tambah'] )) {   //tambah data
@@ -11,7 +12,7 @@ if (isset ( $_POST ['perbaiki'] )) {   /// edit data
 
 
 // tampilkan form jika dibutuhkan
-if (isset ( $_POST ['edit'] ) && isset ( $_POST ['trans_id'] )) {
+if (isset ( $_POST ['edit'] ) && isset ( $_POST ['cash_id'] )) {
 	cash_edit_form($conn);
 } elseif (isset ( $_POST ['add'] )) {
 	cash_add_form($conn);
@@ -53,7 +54,7 @@ if ($transq->num_rows == 0) {
 			<td><?php echo $transdata['remarks'];?></td>
 			<td><?php echo $transdata['description'];?></td>
 			<td><?php echo $transdata['user'];?></td>
-			<td><form method="post"><input type="hidden" name="trans_id" value="<?php echo $transdata['trans_id'];?>"><input type="submit" name="dele" value="Hapus" id="delbutton"> <input type="submit" name="edit" value="Perbaiki" id="editbutton"></form></td>
+			<td><form method="post"><input type="hidden" name="cash_id" value="<?php echo $transdata['cash_id'];?>"><input type="submit" name="dele" value="Hapus" id="delbutton"> <input type="submit" name="edit" value="Perbaiki" id="editbutton"></form></td>
 		</tr>
 	<?php
 	}

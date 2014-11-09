@@ -1,4 +1,6 @@
 <?php
+// file      : cashflow.php
+// deskripsi : file untuk manajemen jenis aliran kas
 
 if (isset ( $_POST ['dele'] ) && isset ( $_POST ['flow_id'] )) {   //hapus data
 	$msg=flow_del($conn);

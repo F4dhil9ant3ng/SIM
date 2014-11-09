@@ -1,4 +1,7 @@
 <?php
+// file      : trans_type.php
+// deskripsi : file untuk manajemen data master jenis transaksi kas
+
 if (isset ( $_POST ['dele'] ) && isset ( $_POST ['ttype_id'] )) {   //edit data
 	$msg=ttype_del($conn);
 }

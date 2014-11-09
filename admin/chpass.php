@@ -1,4 +1,7 @@
 <?php
+// file      : chpass.php
+// deskripsi : file untuk mengganti password user yang sedang aktif
+
 if (isset($_POST['change'])){
 	$currq="select * from users where user_id='".$_SESSION['user_id']."' limit 1";
 	$currres=$conn->query($currq);
