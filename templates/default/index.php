@@ -24,7 +24,7 @@ function toDashboard(){
 					<li><a href="<?php echo $home; ?>inventory/products"><img src="<?php echo $home_uri; ?>images/package.png" height="16px" width="16px"> Produk</a></li>
 				</ul>
 			</li>
-			<li><a href="<?php echo $home; ?>report/"><img src="<?php echo $home_uri; ?>images/report.png" height="16px" width="16px"> Laporan</a></li>
+			<li><a href="<?php echo $home; ?>report/reports"><img src="<?php echo $home_uri; ?>images/report.png" height="16px" width="16px"> Laporan</a></li>
 			<li><a href="#"><img src="<?php echo $home_uri; ?>images/table_multiple.png" height="16px" width="16px"> Data Master</a>
 				<ul id="level2">
 					<li><a href="<?php echo $home; ?>admin/cashflow"><img src="<?php echo $home_uri; ?>images/table_multiple.png" height="16px" width="16px"> Aliran Kas</a></li>
