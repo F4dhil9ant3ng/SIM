@@ -6,5 +6,4 @@ Contributing is easy.
 
 CONTRIBUTORS
 ===
-
 Muhammad Riza
