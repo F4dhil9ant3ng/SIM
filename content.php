@@ -4,13 +4,19 @@ if(count($patharray)>3){
 	$realpatharray=array_slice($patharray, 2);
 	$path=implode("/",$realpatharray);
 	$filepath=$path.".php";
-	if($revealpath){
+	if($debuginfo){
 	?>
 		<div id="debuginfo"><p>Debug Info</p>
-			!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</br>
-			!!! To remove this box, set debug information setting in conf.php file. !!!</br>
-			!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</br>
-			<p>File path: <?php print $filepath; ?></p>
+			To remove this box, set debug information setting in conf.php file.
+			<?php
+		if($showversion)
+			print "<p>SIM Version: $build </p>";
+		if($revealpath)
+			print "<p>File path: $filepath </p>";
+		if($showrevdate)
+			print "<p>Revision date: ".filemtime($filepath)."</p>";
+			?>
+
 		</div>
 	<?php
 	}
