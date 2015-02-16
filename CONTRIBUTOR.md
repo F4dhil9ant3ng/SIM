@@ -7,5 +7,4 @@ Contributing is easy.
 CONTRIBUTORS
 ===
 
-Muhammad Riza (lead dev)
-Hendra
+Muhammad Riza
