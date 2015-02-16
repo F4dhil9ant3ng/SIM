@@ -9,7 +9,7 @@ $home_uri="http://".$_SERVER["HTTP_HOST"].$separator.$homedir."/";  //url SIM
 $template="default";  //nama template
 $template_uri=$home_uri."templates/$template/";   //lokasi template
 $home=$home_uri."home.php/";  //alamat home.php, router bagi SIM dilengkapi dengan / (slash)
-///// $dashboard=$home_uri."home.php";  //url dashboard
+// $dashboard=$home_uri."home.php";  //url dashboard
 
 ### Database Server Settings
 $servername = "localhost";  //alamat server database

@@ -2,8 +2,8 @@
 include_once 'conf.php';
 include_once 'base.php';
 session_start ();
-if (isset ( $_SESSION ['user_id'] )) {
-	header ( 'Location: home.php' );
+if (isset($_SESSION['user_id'])) {
+	header('Location: '.$home);
 } else {
 	?>
 <!DOCTYPE html>
@@ -39,7 +39,7 @@ if (isset ( $_SESSION ['user_id'] )) {
 		<p></p>
 		<div id="loginlabel">&nbsp;</div>
 		<div id="loginbutton">
-			<input type="submit" value="Masuk" id="loginsubmit"> <input type="reset" value="Batal" id="loginreset">
+			<input type="submit" value="Masuk" id="loginsubmit"> <input type="reset" value="Batal" id="loginreset"> <input type="hidden" name="in" value="masuk">
 		</div>
 	</form>
 	</div>

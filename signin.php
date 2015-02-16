@@ -9,20 +9,20 @@ if(isset($_POST['in'])){
 		$user = $res->fetch_assoc();
 		session_start();
 		$_SESSION['user_id'] = $user['user_id'];
-		$_SESSION['name']=$user['realname'];
+		$_SESSION['name'] = $user['realname'];
 		$_SESSION['user'] = $user['username'];
-				
-		header('Location: home.php');
+		header('Location: '.$home);
 		
 		}
 	else{
-		header('Location: index.php?msg=Maaf!+Kombinasi+pengguna+dan+katasandi+salah');
+		echo "aneh 2";
+		header('Location: '.$home_uri.'index.php?msg=Maaf!+Kombinasi+pengguna+dan+katasandi+salah');
 	} 
 }
 elseif(isset($_POST['out'])){
 	session_start();
 	session_destroy();
-	header('Location: index.php?msg=Anda+telah+keluar+dari+aplikasi');
+	header('Location: '.$home_uri.'index.php?msg=Anda+telah+keluar+dari+aplikasi');
 }
 else{
 	echo "Maaf! berkas yang anda cari tidak ditemukan";
