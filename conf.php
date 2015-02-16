@@ -23,7 +23,7 @@ if ($conn->connect_error) {
 
 ### Debug Informations
 $build= "0.216";  //version
-$debuginfo=TRUE;  //show debug info box
+$debuginfo=FALSE;  //show debug info box
 if($debuginfo){
 	$showversion=TRUE;   // SIM version
 	$revealpath=TRUE;   // file path
