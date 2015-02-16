@@ -8,7 +8,7 @@ function batal(){
 	window.location.assign("<?php echo $_SERVER['HTTP_REFERER'] ?>")
 }
 function toDashboard(){
-	window.location.assign("<?php echo $dashboard; ?>")
+	window.location.assign("<?php echo $home_uri; ?>")
 }
 </script>
 <title>Sistem Informasi Manajemen Industri Kecil</title>
@@ -16,7 +16,7 @@ function toDashboard(){
 <body>
 	<div id="menu">
 		<ul id="level1">
-			<li><a href="<?php echo $home_uri; ?>home.php"><img src="<?php echo $home_uri; ?>images/house.png" height="16px" width="16px"> Beranda</a></li>
+			<li><a href="<?php echo $home_uri; ?>"><img src="<?php echo $home_uri; ?>images/house.png" height="16px" width="16px"> Beranda</a></li>
 			<li><a href="<?php echo $home; ?>cash/cash"><img src="<?php echo $home_uri; ?>images/money.png" height="16px" width="16px"> Kas</a></li>
 			<li><a href="#"><img src="<?php echo $home_uri; ?>images/package.png" height="16px" width="16px"> Inventory</a>
 				<ul id="level2">
