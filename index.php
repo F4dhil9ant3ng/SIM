@@ -2,7 +2,7 @@
 include_once 'conf.php';
 include_once 'base.php';
 session_start ();
-if (isset ( $_SESSION ['uid'] )) {
+if (isset ( $_SESSION ['user_id'] )) {
 	header ( 'Location: home.php' );
 } else {
 	?>
@@ -51,15 +51,6 @@ if (isset ( $_SESSION ['uid'] )) {
 <div id="footer"><div><strong><a href="http://udariza.wordpress.com/cfm">SIM - Small Industry Manager</a></strong>.
 		&copy; 2014 <a href="mailto:muhammadriza@gmail.com">Mohammad Riza
 			Nurtam</a>. Licensed under MIT License</div>
-	<p>
-		Disarankan menggunakan peramban dengan dukungan HTML5 seperti <a
-			href="http://firefox.com"><img src="images/firefox.png"
-			height="16px" width="16px"> Firefox</a>, <a
-			href="http://chrome.google.com"><img src="images/chrome.png"
-			height="16px" width="16px"> Chrome</a> atau <a
-			href="http://opera.com"><img src="images/opera.png" height="16px"
-			width="16px"> Opera</a>
-	</p>
 </div>
 </body>
 </html>
