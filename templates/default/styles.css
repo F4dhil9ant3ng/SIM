@@ -269,3 +269,9 @@ div#dataform{
 #about p{
 	font-size: .9em;
 }
+div#debuginfo{
+	background-color: #ff0000;
+	color: #ffffff;
+	font-size: 12px;
+	font-family: monospace;
+}
