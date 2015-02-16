@@ -1,4 +1,5 @@
 <?php
+$build= "0.216";
 $homedir= "";  //direktori SIM
 $template="default";  //nama template
 if($homedir=="")
@@ -22,5 +23,10 @@ if ($conn->connect_error) {
 }
 
 ###debug informations
-$revealpath=TRUE;
+$debuginfo=TRUE;  //show debu info box
+if($debuginfo){
+	$showversion=TRUE;   // SIM version
+	$revealpath=TRUE;   // file path
+	$showrevdate=FALSE; // revision date
+}
 ?>
