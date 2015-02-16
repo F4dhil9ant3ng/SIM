@@ -10,11 +10,11 @@ if(count($patharray)>3){
 			To remove this box, set debug information setting in conf.php file.
 			<?php
 		if($showversion)
-			print "<p>SIM Version: $build </p>";
+			echo "<p>SIM Version: $build </p>";
 		if($revealpath)
-			print "<p>File path: $filepath </p>";
+			echo "<p>File path: $filepath </p>";
 		if($showrevdate)
-			print "<p>Revision date: ".filemtime($filepath)."</p>";
+			echo "<p>Revision date: ".filemtime($filepath)."</p>";
 			?>
 
 		</div>
