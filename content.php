@@ -1,9 +1,21 @@
 <?php
 $patharray=explode("/",$_SERVER['REQUEST_URI']);
 if(count($patharray)>3){
-	$realpatharray=array_slice($patharray, 3);
+	$realpatharray=array_slice($patharray, 2);
 	$path=implode("/",$realpatharray);
-	include $path.".php";
+	$filepath=$path.".php";
+	if($revealpath){
+	?>
+		<div id="debuginfo"><p>Debug Info</p>
+			!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</br>
+			!!! To remove this box, set debug information setting in conf.php file. !!!</br>
+			!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</br>
+			<p>File path: <?php print $filepath; ?></p>
+		</div>
+	<?php
+	}
+	include $filepath;
+
 }
 else
 {
