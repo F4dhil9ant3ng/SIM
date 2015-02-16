@@ -1,21 +1,27 @@
 <?php
 // var_dump($_POST);
-if (isset ( $_POST ['dele'] ) && isset ( $_POST ['cash_id'] )) {   //edit data
-	$msg=cash_del($conn);
+if (isset ( $_POST ['dele'] ) && isset ( $_POST ['cash_id'] )) { // edit data
+	$msg = cash_del ( $conn );
 }
-if (isset ( $_POST ['tambah'] )) {   //tambah data
-	$msg=cash_add($conn);
+if (isset ( $_POST ['tambah'] )) { // tambah data
+	$msg = cash_add ( $conn );
 }
-if (isset ( $_POST ['perbaiki'] )) {   /// edit data
-	$msg=cash_edit($conn);
+if (isset ( $_POST ['perbaiki'] )) { // / edit data
+	$msg = cash_edit ( $conn );
 }
 
+// tampilkan form filter data
+?>
+<form method="post">
+	<input type="date">
+</form>
+<?php
 
 // tampilkan form jika dibutuhkan
 if (isset ( $_POST ['edit'] ) && isset ( $_POST ['cash_id'] )) {
-	cash_edit_form($conn);
+	cash_edit_form ( $conn );
 } elseif (isset ( $_POST ['add'] )) {
-	cash_add_form($conn);
+	cash_add_form ( $conn );
 } else {
 	echo "<form method=\"post\"><input type=\"submit\" name=\"add\" value=\"Tambah\" id=\"addbutton\" ></form>";
 }
@@ -31,7 +37,8 @@ if ($transq->num_rows == 0) {
 		<tr class="tabheader">
 			<th>No<br>Urut
 			</th>
-			<th>No<br>Transaksi</th>
+			<th>No<br>Transaksi
+			</th>
 			<th>Tanggal</th>
 			<th>Jumlah</th>
 			<th>Keterangan</th>
@@ -46,7 +53,8 @@ if ($transq->num_rows == 0) {
 	while ( $transdata = $transq->fetch_assoc () ) {
 		$line ++;
 		?>
-		<tr class="<?php if($line & 1) {echo "oddline";} else{ echo"evenline";} ?>">
+		<tr
+			class="<?php if($line & 1) {echo "oddline";} else{ echo"evenline";} ?>">
 			<td><?php echo $line;?></td>
 			<td><?php echo $transdata['cash_id'];?></td>
 			<td><?php echo $transdata['day'];?></td>
@@ -54,7 +62,12 @@ if ($transq->num_rows == 0) {
 			<td><?php echo $transdata['remarks'];?></td>
 			<td><?php echo $transdata['description'];?></td>
 			<td><?php echo $transdata['user'];?></td>
-			<td><form method="post"><input type="hidden" name="cash_id" value="<?php echo $transdata['cash_id'];?>"><input type="submit" name="dele" value="Hapus" id="delbutton"> <input type="submit" name="edit" value="Perbaiki" id="editbutton"></form></td>
+			<td><form method="post">
+					<input type="hidden" name="cash_id"
+						value="<?php echo $transdata['cash_id'];?>"><input type="submit"
+						name="dele" value="Hapus" id="delbutton"> <input type="submit"
+						name="edit" value="Perbaiki" id="editbutton">
+				</form></td>
 		</tr>
 	<?php
 	}
