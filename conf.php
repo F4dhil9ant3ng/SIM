@@ -8,8 +8,7 @@ else
 $home_uri = "http://" . $_SERVER ["HTTP_HOST"] . $separator . $homedir . "/"; // url SIM
 $template = "default"; // nama template
 $template_uri = $home_uri . "templates/$template/"; // lokasi template
-$home = $home_uri . "home.php/"; // alamat home.php, router bagi SIM dilengkapi dengan / (slash)
-                             // $dashboard=$home_uri."home.php"; //url dashboard
+$home = $home_uri . "home.php/"; // lokasi router
                              
 // ## Database Server Settings
 $servername = "localhost"; // alamat server database
@@ -21,12 +20,13 @@ if ($conn->connect_error) {
 	die ( "Koneksi ke basisdata gagal: " . $conn->connect_error ); // tampilkan pesan kesalahan jika gagal koneksi ke database
 }
 
-// ## Debug Informations
-$build = "0.216"; // version
-$debuginfo = FALSE; // show debug info box
+// ## Informasi debug
+$build = "0.216"; // versi
+$debuginfo = FALSE; // tampilkan informasi debug, TRUE=tampil, FALSE=tidak tampil
 if ($debuginfo) {
-	$showversion = TRUE; // SIM version
-	$revealpath = TRUE; // file path
-	$showrevdate = FALSE; // revision date
+	$showversion = TRUE; // tampilkan versi SIM
+	$revealpath = TRUE; // tampilkan lokasi berkas
+	$showrevdate = FALSE; // tampilkan tanggal perbaikan berkas terakhir
 }
+
 ?>
