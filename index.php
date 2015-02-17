@@ -1,7 +1,6 @@
 <?php
 include_once 'conf.php';
 include_once 'base.php';
-session_start ();
 if (isset ( $_SESSION ['user_id'] )) {
 	header ( 'Location: ' . $home );
 } else {
