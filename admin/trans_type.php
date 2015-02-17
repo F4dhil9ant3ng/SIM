@@ -13,9 +13,9 @@ if (isset ( $_POST ['perbaiki'] )) { // / edit data
 
 // tampilkan form jika dibutuhkan
 if (isset ( $_POST ['edit'] ) && isset ( $_POST ['ttype_id'] )) {
-	ttype_edit_form ( $conn );
+	form_ttype_edit ( $conn );
 } elseif (isset ( $_POST ['add'] )) {
-	ttype_add_form ( $conn );
+	form_ttype_add ( $conn );
 } else {
 	echo "<form method=\"post\"><input type=\"submit\" name=\"add\" value=\"Tambah\" id=\"addbutton\" ></form>";
 }

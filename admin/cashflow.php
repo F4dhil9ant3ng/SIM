@@ -12,9 +12,9 @@ if (isset ( $_POST ['perbaiki'] )) { // / edit data
 }
 
 if (isset ( $_POST ['edit'] ) && isset ( $_POST ['flow_id'] )) {
-	flow_edit_form ( $conn );
+	form_flow_edit ( $conn );
 } elseif (isset ( $_POST ['add'] )) {
-	flow_add_form ( $conn );
+	form_flow_add ( $conn );
 } else {
 	echo "<form method=\"post\"><input type=\"submit\" name=\"add\" value=\"Tambah\" id=\"addbutton\" ></form>";
 }

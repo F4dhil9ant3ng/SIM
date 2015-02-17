@@ -19,9 +19,9 @@ if (isset ( $_POST ['perbaiki'] )) { // / edit data
 
 // tampilkan form jika dibutuhkan
 if (isset ( $_POST ['edit'] ) && isset ( $_POST ['cash_id'] )) {
-	cash_edit_form ( $conn );
+	form_cash_edit ( $conn );
 } elseif (isset ( $_POST ['add'] )) {
-	cash_add_form ( $conn );
+	form_cash_add ( $conn );
 } else {
 	echo "<form method=\"post\"><input type=\"submit\" name=\"add\" value=\"Tambah\" id=\"addbutton\" ></form>";
 }

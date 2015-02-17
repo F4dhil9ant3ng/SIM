@@ -1,6 +1,6 @@
 <?php
 // form::cash::add BEGIN
-function cash_add_form($conn) {
+function form_cash_add($conn) {
 	?>
 <div id="dataform">
 	<form method="post">
@@ -72,8 +72,8 @@ function cash_add_form($conn) {
 // form::cash::add END
 
 // form::cash::edit BEGIN
-function cash_edit_form($conn) {
-	$editsql = "select * from transactions where cash_id='" . $_POST ['cash_id'] . "' limit 1";
+function form_cash_edit($conn) {
+	$editsql = "select * from cash where cash_id='" . $_POST ['cash_id'] . "' limit 1";
 	$editres = $conn->query ( $editsql );
 	$data = $editres->fetch_assoc ();
 	$date = new DateTime ( $data ['day'] );
@@ -200,7 +200,7 @@ function cash_edit($conn) {
 // action::cash::edit END
 
 // form::cashflow::edit BEGIN
-function flow_edit_form($conn) {
+function form_flow_edit($conn) {
 	$editsql = "select * from cash_flow where flow='" . $_POST ['flow_id'] . "' limit 1";
 	$editres = $conn->query ( $editsql );
 	$data = $editres->fetch_assoc ();
@@ -230,7 +230,7 @@ function flow_edit_form($conn) {
 // form::cashflow::edit END
 
 // form::cashflow::add BEGIN
-function flow_add_form($conn) {
+function form_flow_add($conn) {
 	?>
 <div id="dataform">
 	<form method="post">
@@ -290,7 +290,7 @@ function flow_edit($conn) {
 // action::cashflow::edit END
 
 // form::ttype::add BEGIN
-function ttype_add_form($conn) {
+function form_ttype_add($conn) {
 	$flowsql = "select * from cash_flow";
 	$flowres = $conn->query ( $flowsql );
 	
@@ -323,7 +323,7 @@ function ttype_add_form($conn) {
 // form::ttype::add END
 
 // form::ttype::edit BEGIN
-function ttype_edit_form($conn) {
+function form_ttype_edit($conn) {
 	$ttypesql = "select * from ttype_view where id='" . $_POST ['ttype_id'] . "' limit 1";
 	$ttyperes = $conn->query ( $ttypesql );
 	$ttype = $ttyperes->fetch_assoc ();
