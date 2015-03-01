@@ -7,29 +7,29 @@ function form_cash_add($conn) {
 		<div id="inputlabel">Tanggal</div>
 		<div id="inputform">
 			<select name="tanggal"><?php
-	for($tgl = 1; $tgl <= 31; $tgl ++) {
+	for($tgl=1; $tgl <= 31; $tgl ++) {
 		echo "<option value=\"$tgl\" ";
-		if ($tgl == date ( "j" )) {
+		if($tgl == date ( "j" )) {
 			echo "selected=\"selected\"";
 		}
 		echo ">$tgl</option>";
 	}
 	?></select> <select name="bulan"><?php
-	$bulan [1] = "Januari";
-	$bulan [2] = "Februari";
-	$bulan [3] = "Maret";
-	$bulan [4] = "April";
-	$bulan [5] = "Mei";
-	$bulan [6] = "Juni";
-	$bulan [7] = "Juli";
-	$bulan [8] = "Agustus";
-	$bulan [9] = "September";
-	$bulan [10] = "Oktober";
-	$bulan [11] = "November";
-	$bulan [12] = "Desember";
-	for($bln = 1; $bln <= 12; $bln ++) {
+	$bulan[1]="Januari";
+	$bulan[2]="Februari";
+	$bulan[3]="Maret";
+	$bulan[4]="April";
+	$bulan[5]="Mei";
+	$bulan[6]="Juni";
+	$bulan[7]="Juli";
+	$bulan[8]="Agustus";
+	$bulan[9]="September";
+	$bulan[10]="Oktober";
+	$bulan[11]="November";
+	$bulan[12]="Desember";
+	for($bln=1; $bln <= 12; $bln ++) {
 		echo "<option value=\"$bln\" ";
-		if ($bln == date ( "n" )) {
+		if($bln == date ( "n" )) {
 			echo "selected=\"selected\"";
 		}
 		echo ">$bulan[$bln]</option>";
@@ -49,10 +49,10 @@ function form_cash_add($conn) {
 		<div id="inputlabel">Jenis transaksi</div>
 		<div id="inputform">
 			<select name="jenis"><?php
-	$transtypesql = "select * from transaction_types";
-	$transtyperes = $conn->query ( $transtypesql );
-	while ( $transtype = $transtyperes->fetch_assoc () ) {
-		echo "<option value=\"" . $transtype ['trans_type_id'] . "\">" . $transtype ['trans_type_id'] . " - " . $transtype ['description'] . "</option>";
+	$transtypesql="select * from transaction_types";
+	$transtyperes=$conn->query ( $transtypesql );
+	while ( $transtype=$transtyperes->fetch_assoc () ) {
+		echo "<option value=\"" . $transtype['trans_type_id'] . "\">" . $transtype['trans_type_id'] . " - " . $transtype['description'] . "</option>";
 	}
 	?></select>
 		</div>
@@ -73,42 +73,42 @@ function form_cash_add($conn) {
 
 // form::cash::edit BEGIN
 function form_cash_edit($conn) {
-	$editsql = "select * from cash where cash_id='" . $_POST ['cash_id'] . "' limit 1";
-	$editres = $conn->query ( $editsql );
-	$data = $editres->fetch_assoc ();
-	$date = new DateTime ( $data ['day'] );
-	$day = $date->format ( 'j' );
-	$month = $date->format ( 'n' );
-	$year = $date->format ( 'Y' );
+	$editsql="select * from cash where cash_id='" . $_POST['cash_id'] . "' limit 1";
+	$editres=$conn->query ( $editsql );
+	$data=$editres->fetch_assoc ();
+	$date=new DateTime ( $data['day'] );
+	$day=$date->format ( 'j' );
+	$month=$date->format ( 'n' );
+	$year=$date->format ( 'Y' );
 	?>
 <div id="dataform">
 	<form method="post">
 		<div id="inputlabel">Tanggal</div>
 		<div id="inputform">
 			<select name="tanggal"><?php
-	for($tgl = 1; $tgl <= 31; $tgl ++) {
+	for($tgl=1; $tgl <= 31; $tgl ++) {
 		echo "<option value=\"$tgl\" ";
-		if ($tgl == $day) {
+		if($tgl == $day) {
 			echo "selected=\"selected\"";
 		}
 		echo ">$tgl</option>";
 	}
 	?></select> <select name="bulan"><?php
-	$bulan [1] = "Januari";
-	$bulan [2] = "Februari";
-	$bulan [3] = "Maret";
-	$bulan [4] = "April";
-	$bulan [5] = "Mei";
-	$bulan [6] = "Juni";
-	$bulan [7] = "Juli";
-	$bulan [8] = "Agustus";
-	$bulan [9] = "September";
-	$bulan [10] = "Oktober";
-	$bulan [11] = "November";
-	$bulan [12] = "Desember";
-	for($bln = 1; $bln <= 12; $bln ++) {
+	$bulan[1]="Januari";
+	$bulan[2]="Februari";
+	$bulan[3]="Maret";
+	$bulan[4]="April";
+	$bulan[5]="Mei";
+	$bulan[6]="Juni";
+	$bulan[7]="Juli";
+	$bulan[8]="Agustus";
+	$bulan[9]="September";
+	$bulan[10]="Oktober";
+	$bulan[11]="November";
+	$bulan[12]="Desember";
+	for($bln=1; $bln <= 12; $bln ++) {
 		echo "<option value=\"$bln\" ";
-		if ($bln == $month) {
+		if($bln == $month) {
 			echo "selected=\"selected\"";
 		}
 		echo ">$bulan[$bln]</option>";
@@ -129,14 +129,14 @@ function form_cash_edit($conn) {
 		<div id="inputlabel">Jenis transaksi</div>
 		<div id="inputform">
 			<select name="jenis"><?php
-	$transtypesql = "select * from transaction_types";
-	$transtyperes = $conn->query ( $transtypesql );
-	while ( $transtype = $transtyperes->fetch_assoc () ) {
-		echo "<option value=\"" . $transtype ['trans_type_id'] . "\"";
-		if ($transtype ['trans_type_id'] == $data ['trans_type']) {
+	$transtypesql="select * from transaction_types";
+	$transtyperes=$conn->query ( $transtypesql );
+	while ( $transtype=$transtyperes->fetch_assoc () ) {
+		echo "<option value=\"" . $transtype['trans_type_id'] . "\"";
+		if($transtype['trans_type_id'] == $data['trans_type']) {
 			echo "selected=\"selected\"";
 		}
-		echo ">" . $transtype ['trans_type_id'] . " - " . $transtype ['description'] . "</option>";
+		echo ">" . $transtype['trans_type_id'] . " - " . $transtype['description'] . "</option>";
 	}
 	?></select>
 		</div>
@@ -159,12 +159,12 @@ function form_cash_edit($conn) {
 
 // action::cash::del BEGIN
 function cash_del($conn) {
-	$cash_id = $_POST ['cash_id'];
-	$sql = "delete from cash where cash_id='$cash_id'";
-	if ($conn->query ( $sql )) {
-		$msg = "Data dengan nomor transaksi " . $cash_id . " telah dihapus dari basisdata";
+	$cash_id=$_POST['cash_id'];
+	$sql="delete from cash where cash_id='$cash_id'";
+	if($conn->query ( $sql )) {
+		$msg="Data dengan nomor transaksi " . $cash_id . " telah dihapus dari basisdata";
 	} else {
-		$msg = "Proses menghapus data gagal" . $conn->error;
+		$msg="Proses menghapus data gagal" . $conn->error;
 	}
 	return $msg;
 }
@@ -172,14 +172,14 @@ function cash_del($conn) {
 
 // action::cash::add BEGIN
 function cash_add($conn) {
-	$day = $_POST ['tahun'] . "-" . $_POST ['bulan'] . "-" . $_POST ['tanggal'];
+	$day=$_POST['tahun'] . "-" . $_POST['bulan'] . "-" . $_POST['tanggal'];
 	
-	$sql = "insert into cash (day,amount,remarks,trans_type,user) values('$day','" . $_POST ['jumlah'] . "','" . $_POST ['keterangan'] . "','" . $_POST ['jenis'] . "','" . $_POST ['petugas'] . "')";
+	$sql="insert into cash (day,amount,remarks,trans_type,user) values('$day','" . $_POST['jumlah'] . "','" . $_POST['keterangan'] . "','" . $_POST['jenis'] . "','" . $_POST['petugas'] . "')";
 	
-	if ($conn->query ( $sql )) {
-		$msg = "Penambahan data berhasil!";
+	if($conn->query ( $sql )) {
+		$msg="Penambahan data berhasil!";
 	} else {
-		$msg = "Proses penyimpanan ke basisdata gagal. Pesan kegagalan:" . $conn->error;
+		$msg="Proses penyimpanan ke basisdata gagal. Pesan kegagalan:" . $conn->error;
 	}
 	return $msg;
 }
@@ -187,13 +187,13 @@ function cash_add($conn) {
 
 // action::cash::edit BEGIN
 function cash_edit($conn) {
-	$day = $_POST ['tahun'] . "-" . $_POST ['bulan'] . "-" . $_POST ['tanggal'];
+	$day=$_POST['tahun'] . "-" . $_POST['bulan'] . "-" . $_POST['tanggal'];
 	
-	$sql = "update transactions set day='$day',amount='" . $_POST ['jumlah'] . "',remarks='" . $_POST ['keterangan'] . "',trans_type='" . $_POST ['jenis'] . "',user='" . $_POST ['petugas'] . "' where cash_id='" . $_POST ['cash_id'] . "'";
-	if ($conn->query ( $sql )) {
-		$msg = "Pemutakhiran data berhasil!";
+	$sql="update transactions set day='$day',amount='" . $_POST['jumlah'] . "',remarks='" . $_POST['keterangan'] . "',trans_type='" . $_POST['jenis'] . "',user='" . $_POST['petugas'] . "' where cash_id='" . $_POST['cash_id'] . "'";
+	if($conn->query ( $sql )) {
+		$msg="Pemutakhiran data berhasil!";
 	} else
-		$msg = "Proses penyimpanan ke basisdata gagal. Pesan kegagalan:" . $conn->error;
+		$msg="Proses penyimpanan ke basisdata gagal. Pesan kegagalan:" . $conn->error;
 	
 	return $msg;
 }
@@ -201,9 +201,9 @@ function cash_edit($conn) {
 
 // form::cashflow::edit BEGIN
 function form_flow_edit($conn) {
-	$editsql = "select * from cash_flow where flow='" . $_POST ['flow_id'] . "' limit 1";
-	$editres = $conn->query ( $editsql );
-	$data = $editres->fetch_assoc ();
+	$editsql="select * from cash_flow where flow='" . $_POST['flow_id'] . "' limit 1";
+	$editres=$conn->query ( $editsql );
+	$data=$editres->fetch_assoc ();
 	?>
 <div id="dataform">
 	<form method="post">
@@ -255,11 +255,11 @@ function form_flow_add($conn) {
 
 // action::cashflow::del flow BEGIN
 function flow_del($conn) {
-	$sql = "delete from cash_flow where flow='" . $_POST ['flow_id'] . "'";
-	if ($conn->query ( $sql )) {
-		$msg = "Data dengan jenis aliran " . $_POST ['flow_id'] . " telah dihapus dari basisdata";
+	$sql="delete from cash_flow where flow='" . $_POST['flow_id'] . "'";
+	if($conn->query ( $sql )) {
+		$msg="Data dengan jenis aliran " . $_POST['flow_id'] . " telah dihapus dari basisdata";
 	} else {
-		$msg = "Proses menghapus data gagal! Pesan kegagalan: " . $conn->error;
+		$msg="Proses menghapus data gagal! Pesan kegagalan: " . $conn->error;
 	}
 	return $msg;
 }
@@ -267,11 +267,11 @@ function flow_del($conn) {
 
 // action::cashflow::add BEGIN
 function flow_add($conn) {
-	$sql = "insert into cash_flow(flow,description) values('" . $_POST ['flow'] . "','" . $_POST ['desc'] . "')";
-	if ($conn->query ( $sql )) {
-		$msg = "Penambahan data berhasil!";
+	$sql="insert into cash_flow(flow,description) values('" . $_POST['flow'] . "','" . $_POST['desc'] . "')";
+	if($conn->query ( $sql )) {
+		$msg="Penambahan data berhasil!";
 	} else
-		$msg = "Proses penyimpanan ke basisdata gagal. Pesan kegagalan: " . $conn->error;
+		$msg="Proses penyimpanan ke basisdata gagal. Pesan kegagalan: " . $conn->error;
 	
 	return $msg;
 }
@@ -279,11 +279,11 @@ function flow_add($conn) {
 
 // action::cashflow::edit BEGIN
 function flow_edit($conn) {
-	$sql = "update cash_flow set flow='" . $_POST ['flow'] . "',description='" . $_POST ['desc'] . "' where flow='" . $_POST ['flow_id'] . "'";
-	if ($conn->query ( $sql )) {
-		$msg = "Pemutakhiran data berhasil!";
+	$sql="update cash_flow set flow='" . $_POST['flow'] . "',description='" . $_POST['desc'] . "' where flow='" . $_POST['flow_id'] . "'";
+	if($conn->query ( $sql )) {
+		$msg="Pemutakhiran data berhasil!";
 	} else
-		$msg = "Proses penyimpanan ke basisdata gagal. Pesan kegagalan:" . $conn->error;
+		$msg="Proses penyimpanan ke basisdata gagal. Pesan kegagalan:" . $conn->error;
 	
 	return $msg;
 }
@@ -291,8 +291,8 @@ function flow_edit($conn) {
 
 // form::ttype::add BEGIN
 function form_ttype_add($conn) {
-	$flowsql = "select * from cash_flow";
-	$flowres = $conn->query ( $flowsql );
+	$flowsql="select * from cash_flow";
+	$flowres=$conn->query ( $flowsql );
 	
 	?>
 <div id="dataform">
@@ -301,8 +301,8 @@ function form_ttype_add($conn) {
 		<div id="inputform">
 			<select name="flow">
 		<?php
-	while ( $flow = $flowres->fetch_assoc () ) {
-		echo "<option value=\"" . $flow ['flow'] . "\">" . $flow ['flow'] . " - " . $flow ['description'] . "</option>";
+	while ( $flow=$flowres->fetch_assoc () ) {
+		echo "<option value=\"" . $flow['flow'] . "\">" . $flow['flow'] . " - " . $flow['description'] . "</option>";
 	}
 	?>
 		</select>
@@ -324,9 +324,9 @@ function form_ttype_add($conn) {
 
 // form::ttype::edit BEGIN
 function form_ttype_edit($conn) {
-	$ttypesql = "select * from ttype_view where id='" . $_POST ['ttype_id'] . "' limit 1";
-	$ttyperes = $conn->query ( $ttypesql );
-	$ttype = $ttyperes->fetch_assoc ();
+	$ttypesql="select * from ttype_view where id='" . $_POST['ttype_id'] . "' limit 1";
+	$ttyperes=$conn->query ( $ttypesql );
+	$ttype=$ttyperes->fetch_assoc ();
 	?>
 <div id="dataform">
 	<form method="post">
@@ -334,14 +334,14 @@ function form_ttype_edit($conn) {
 		<div id="inputform">
 			<select name="flow">
 		<?php
-	$flowsql = "select * from cash_flow";
-	$flowres = $conn->query ( $flowsql );
-	while ( $flow = $flowres->fetch_assoc () ) {
-		echo "<option value=\"" . $flow ['flow'] . "\" ";
-		if ($flow ['flow'] == $ttype ['flow']) {
+	$flowsql="select * from cash_flow";
+	$flowres=$conn->query ( $flowsql );
+	while ( $flow=$flowres->fetch_assoc () ) {
+		echo "<option value=\"" . $flow['flow'] . "\" ";
+		if($flow['flow'] == $ttype['flow']) {
 			echo "selected=\"selected\"";
 		}
-		echo ">" . $flow ['flow'] . " - " . $flow ['description'] . "</option>";
+		echo ">" . $flow['flow'] . " - " . $flow['description'] . "</option>";
 	}
 	?>
 		</select>
@@ -366,11 +366,11 @@ function form_ttype_edit($conn) {
 
 // action::ttype:add BEGIN
 function ttype_add($conn) {
-	$sql = "insert into transaction_types(flow,description) values('" . $_POST ['flow'] . "','" . $_POST ['desc'] . "')";
-	if ($conn->query ( $sql )) {
-		$msg = "Penambahan data berhasil!";
+	$sql="insert into transaction_types(flow,description) values('" . $_POST['flow'] . "','" . $_POST['desc'] . "')";
+	if($conn->query ( $sql )) {
+		$msg="Penambahan data berhasil!";
 	} else
-		$msg = "Proses penyimpanan ke basisdata gagal. Pesan kegagalan: " . $conn->error;
+		$msg="Proses penyimpanan ke basisdata gagal. Pesan kegagalan: " . $conn->error;
 	
 	return $msg;
 }
@@ -378,11 +378,11 @@ function ttype_add($conn) {
 
 // action::ttype:edit BEGIN
 function ttype_edit($conn) {
-	$sql = "update transaction_types set flow='" . $_POST ['flow'] . "', description='" . $_POST ['desc'] . "' where trans_type_id='" . $_POST ['trans_type'] . "'";
-	if ($conn->query ( $sql )) {
-		$msg = "Pemutakhiran data berhasil!";
+	$sql="update transaction_types set flow='" . $_POST['flow'] . "', description='" . $_POST['desc'] . "' where trans_type_id='" . $_POST['trans_type'] . "'";
+	if($conn->query ( $sql )) {
+		$msg="Pemutakhiran data berhasil!";
 	} else
-		$msg = "Proses penyimpanan ke basisdata gagal. Pesan kegagalan:" . $conn->error;
+		$msg="Proses penyimpanan ke basisdata gagal. Pesan kegagalan:" . $conn->error;
 	
 	return $msg;
 }
@@ -390,16 +390,15 @@ function ttype_edit($conn) {
 
 // action::cashflow::del flow BEGIN
 function ttype_del($conn) {
-	$sql = "delete from transaction_types where trans_type_id='" . $_POST ['ttype_id'] . "'";
-	if ($conn->query ( $sql )) {
-		$msg = "Data dengan jenis aliran " . $_POST ['ttype_id'] . " telah dihapus dari basisdata";
+	$sql="delete from transaction_types where trans_type_id='" . $_POST['ttype_id'] . "'";
+	if($conn->query ( $sql )) {
+		$msg="Data dengan jenis aliran " . $_POST['ttype_id'] . " telah dihapus dari basisdata";
 	} else {
-		$msg = "Proses menghapus data gagal! Pesan kegagalan: " . $conn->error;
+		$msg="Proses menghapus data gagal! Pesan kegagalan: " . $conn->error;
 	}
 	return $msg;
 }
 // action::cashflow::del END
-
 
 
 ?>
