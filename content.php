@@ -1,28 +1,27 @@
 <?php
-$patharray = explode ( "/", $_SERVER ['REQUEST_URI'] );
-if (count ( $patharray ) > 3) {
-	$realpatharray = array_slice ( $patharray, 2 );
-	$path = implode ( "/", $realpatharray );
-	$filepath = $path . ".php";
-	if ($debuginfo) {
+$uri=$_SERVER['REQUEST_URI'];
+$uri=preg_replace('`^.+\.php/`', '', $uri);
+$filepath=$uri.".php";
+if($debuginfo) {
 		?>
 <div id="debuginfo">
 	<p>Debug Info</p>
 			To remove this box, set debug information setting in conf.php file.
 			<?php
-		if ($showversion)
+		if($showversion)
 			echo "<p>SIM Version: $build </p>";
-		if ($revealpath)
+		if($revealpath)
 			echo "<p>File path: $filepath </p>";
-		if ($showrevdate)
+		if($showrevdate)
 			echo "<p>Revision date: " . filemtime ( $filepath ) . "</p>";
 		?>
 
 		</div>
 <?php
-	}
+}
+if($uri!="")
 	include $filepath;
-} else {
+else {
 	?><div id="dataform">
 	<h4>Selamat datang di SIM</h4>
 	<p>Silakan pilih menu untuk memulai</p>
