@@ -1,19 +1,19 @@
 <?php
 // file : chpass.php
 // deskripsi : file untuk mengganti password user yang sedang aktif
-if (isset ( $_POST ['change'] )) {
-	$currq = "select * from users where user_id='" . $_SESSION ['user_id'] . "' limit 1";
-	$currres = $conn->query ( $currq );
-	$currdata = $currres->fetch_assoc ();
-	if (md5 ( $_POST ['existingpass'] ) != $currdata ['password']) {
-		$msg = "Katasandi salah!";
-	} elseif ($_POST ['newpass'] == $_POST ['passconfirm'] && md5 ( $_POST ['existingpass'] ) == $currdata ['password']) {
-		$updateq = "update users set password='" . md5 ( $_POST ['newpass'] ) . "' where user_id='" . $_SESSION ['user_id'] . "' and password='" . md5 ( $_POST ['existingpass'] ) . "'";
-		if ($conn->query ( $updateq )) {
-			$msg = "Password berhasil diperbaharui";
+if(isset( $_POST['change'] )) {
+	$currq="select * from users where user_id='" . $_SESSION['user_id'] . "' limit 1";
+	$currres=$conn->query ( $currq );
+	$currdata=$currres->fetch_assoc ();
+	if(md5 ( $_POST['existingpass'] ) != $currdata['password']) {
+		$msg="Katasandi salah!";
+	} elseif($_POST['newpass'] == $_POST['passconfirm'] && md5 ( $_POST['existingpass'] ) == $currdata['password']) {
+		$updateq="update users set password='" . md5 ( $_POST['newpass'] ) . "' where user_id='" . $_SESSION['user_id'] . "' and password='" . md5 ( $_POST['existingpass'] ) . "'";
+		if($conn->query ( $updateq )) {
+			$msg="Password berhasil diperbaharui";
 		}
 	} else
-		$msg = "Konfirmasi password tidak cocok";
+		$msg="Konfirmasi password tidak cocok";
 } else {
 	?>
 <div id="dataform">

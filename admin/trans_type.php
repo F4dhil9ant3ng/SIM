@@ -1,28 +1,28 @@
 <?php
 // file : trans_type.php
 // deskripsi : file untuk manajemen data master jenis transaksi kas
-if (isset ( $_POST ['dele'] ) && isset ( $_POST ['ttype_id'] )) { // edit data
-	$msg = ttype_del ( $conn );
+if(isset( $_POST['dele'] ) && isset( $_POST['ttype_id'] )) { // edit data
+	$msg=ttype_del ( $conn );
 }
-if (isset ( $_POST ['tambah'] )) { // tambah data
-	$msg = ttype_add ( $conn );
+if(isset( $_POST['tambah'] )) { // tambah data
+	$msg=ttype_add ( $conn );
 }
-if (isset ( $_POST ['perbaiki'] )) { // / edit data
-	$msg = ttype_edit ( $conn );
+if(isset( $_POST['perbaiki'] )) { // / edit data
+	$msg=ttype_edit ( $conn );
 }
 
 // tampilkan form jika dibutuhkan
-if (isset ( $_POST ['edit'] ) && isset ( $_POST ['ttype_id'] )) {
+if(isset( $_POST['edit'] ) && isset( $_POST['ttype_id'] )) {
 	form_ttype_edit ( $conn );
-} elseif (isset ( $_POST ['add'] )) {
+} elseif(isset( $_POST['add'] )) {
 	form_ttype_add ( $conn );
 } else {
 	echo "<form method=\"post\"><input type=\"submit\" name=\"add\" value=\"Tambah\" id=\"addbutton\" ></form>";
 }
-$ttypesql = "select * from ttype_view";
-$ttypeq = $conn->query ( $ttypesql );
-if ($ttypeq->num_rows == 0) {
-	$msg = "Belum ada data!";
+$ttypesql="select * from ttype_view";
+$ttypeq=$conn->query ( $ttypesql );
+if($ttypeq->num_rows == 0) {
+	$msg="Belum ada data!";
 } else {
 	?>
 <table id="data">
@@ -38,8 +38,8 @@ if ($ttypeq->num_rows == 0) {
 	</thead>
 	<tbody>
 <?php
-	$line = 0;
-	while ( $ttype = $ttypeq->fetch_assoc () ) {
+	$line=0;
+	while ( $ttype=$ttypeq->fetch_assoc () ) {
 		$line ++;
 		?>
 		<tr

@@ -6,7 +6,8 @@
 	href="<?php echo $template_uri?>images/favicon.png" />
 <script type="text/javascript">
 function batal(){
-	window.location.assign("<?php echo $_SERVER['HTTP_REFERER'] ?>")
+	history.back();
+	
 }
 function toDashboard(){
 	window.location.assign("<?php echo $home_uri; ?>")
@@ -20,48 +21,48 @@ function toDashboard(){
 			<li><a href="<?php echo $home_uri; ?>"><img
 					src="<?php echo $home_uri; ?>images/house.png" height="16px"
 					width="16px"> Beranda</a></li>
-			<li><a href="<?php echo $home; ?>cash/cash"><img
+			<li><a href="<?php echo $dashboard; ?>cash/cash"><img
 					src="<?php echo $home_uri; ?>images/money.png" height="16px"
 					width="16px"> Kas</a></li>
 			<li><a href="#"><img src="<?php echo $home_uri; ?>images/package.png"
 					height="16px" width="16px"> Inventory</a>
 				<ul id="level2">
-					<li><a href="<?php echo $home; ?>inventory/materials"><img
+					<li><a href="<?php echo $dashboard; ?>inventory/materials"><img
 							src="<?php echo $home_uri; ?>images/bricks.png" height="16px"
 							width="16px"> Bahan Baku</a></li>
-					<li><a href="<?php echo $home; ?>inventory/products"><img
+					<li><a href="<?php echo $dashboard; ?>inventory/products"><img
 							src="<?php echo $home_uri; ?>images/package.png" height="16px"
 							width="16px"> Produk</a></li>
 				</ul></li>
-			<li><a href="<?php echo $home; ?>reports/reports"><img
+			<li><a href="<?php echo $dashboard; ?>reports/reports"><img
 					src="<?php echo $home_uri; ?>images/report.png" height="16px"
 					width="16px"> Laporan</a></li>
 			<li><a href="#"><img
 					src="<?php echo $home_uri; ?>images/table_multiple.png"
 					height="16px" width="16px"> Data Master</a>
 				<ul id="level2">
-					<li><a href="<?php echo $home; ?>admin/cashflow"><img
+					<li><a href="<?php echo $dashboard; ?>admin/cashflow"><img
 							src="<?php echo $home_uri; ?>images/table_multiple.png"
 							height="16px" width="16px"> Aliran Kas</a></li>
-					<li><a href="<?php echo $home; ?>admin/trans_type"><img
+					<li><a href="<?php echo $dashboard; ?>admin/trans_type"><img
 							src="<?php echo $home_uri; ?>images/table_multiple.png"
 							height="16px" width="16px"> Jenis Transaksi</a></li>
 				</ul></li>
 			<li><a href="#"><img src="<?php echo $home_uri; ?>images/user.png"
 					height="16px" width="16px"> <?php echo $_SESSION['name'];?></a>
 				<ul id="level2">
-					<li><a href="<?php echo $home; ?>admin/chpass"><img
+					<li><a href="<?php echo $dashboard; ?>admin/chpass"><img
 							src="<?php echo $home_uri; ?>images/user.png" height="16px"
 							width="16px"> Ubah Katasandi</a></li><?php
-							if ($_SESSION ['user_id'] == '1') {
+							if($_SESSION['user_id'] == '1') {
 								?>
-					<li><a href="<?php echo $home; ?>admin/userman"><img
+					<li><a href="<?php echo $dashboard; ?>admin/userman"><img
 							src="<?php echo $home_uri; ?>images/user_gray.png" height="16px"
 							width="16px"> Pengguna</a></li>
 						<?php
 							}
 							?>
-					<li><form action="<?php echo $home_uri?>signin.php" method="post"
+					<li><form action="<?php echo $home_uri?>index.php" method="post" action="session.php"
 							id="inlineform">
 							<input type="submit" value="Keluar" name="out" id="logoutbutton">
 						</form></li>
@@ -70,13 +71,13 @@ function toDashboard(){
 					src="<?php echo $home_uri; ?>images/information.png" height="16px"
 					width="16px"> Info</a>
 				<ul id="level2">
-					<li><a href="<?php echo $home; ?>help/help"><img
+					<li><a href="<?php echo $dashboard; ?>help/help"><img
 							src="<?php echo $home_uri; ?>images/help.png" height="16px"
 							width="16px"> Bantuan</a></li>
-					<li><a href="<?php echo $home; ?>help/about"><img
+					<li><a href="<?php echo $dashboard; ?>help/about"><img
 							src="<?php echo $home_uri; ?>images/application.png"
 							height="16px" width="16px"> Tentang</a></li>
-					<li><a href="<?php echo $home; ?>help/license"><img
+					<li><a href="<?php echo $dashboard; ?>help/license"><img
 							src="<?php echo $home_uri; ?>images/application.png"
 							height="16px" width="16px"> Lisensi</a></li>
 				</ul></li>
@@ -89,9 +90,13 @@ function toDashboard(){
 	</div>
 	<?php
 	// tampilkan pesan kesalahan jika ada.
-	if (isset ( $msg )) {
+	if(isset( $msg )) {
 		echo "<div id=\"errmsg\">$msg</div>";
 	}
+	foreach($_SESSION as $key=>$value){
+		echo "<p>$key=$value</p>";
+	}
+	echo count($_SESSION);
 	?>
 	<div id="footer">
 		<div>
@@ -101,5 +106,6 @@ function toDashboard(){
 			Licensed under MIT License
 		</div>
 	</div>
+
 </body>
 </html>

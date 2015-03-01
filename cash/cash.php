@@ -1,35 +1,44 @@
 <?php
 // var_dump($_POST);
-if (isset ( $_POST ['dele'] ) && isset ( $_POST ['cash_id'] )) { // edit data
-	$msg = cash_del ( $conn );
+if(isset( $_POST['dele'] ) && isset( $_POST['cash_id'] )) { // edit data
+	$msg=cash_del ( $conn );
 }
-if (isset ( $_POST ['tambah'] )) { // tambah data
-	$msg = cash_add ( $conn );
+if(isset( $_POST['tambah'] )) { // tambah data
+	$msg=cash_add ( $conn );
 }
-if (isset ( $_POST ['perbaiki'] )) { // / edit data
-	$msg = cash_edit ( $conn );
+if(isset( $_POST['perbaiki'] )) { // / edit data
+	$msg=cash_edit ( $conn );
 }
 
 // tampilkan form filter data
 ?>
 <form method="post">
-	<input type="date">
-</form>
+	<select name="tanggal">
+		<?php 
+		for($t=1;$t<=31;$t++)
+			echo "<option value=\"$t\">$t</option>";
+		?>
+	</select>
+	<select name="bulan">
+		<option value="Januari">Januari</option>
+	</select>
+	<input type="submit" name="filter" value="filter">
+	</form>
 <?php
 
 // tampilkan form jika dibutuhkan
-if (isset ( $_POST ['edit'] ) && isset ( $_POST ['cash_id'] )) {
+if(isset( $_POST['edit'] ) && isset( $_POST['cash_id'] )) {
 	form_cash_edit ( $conn );
-} elseif (isset ( $_POST ['add'] )) {
+} elseif(isset( $_POST['add'] )) {
 	form_cash_add ( $conn );
 } else {
 	echo "<form method=\"post\"><input type=\"submit\" name=\"add\" value=\"Tambah\" id=\"addbutton\" ></form>";
 }
 
-$sql = "select * from cash_view";
-$transq = $conn->query ( $sql );
-if ($transq->num_rows == 0) {
-	$msg = "Belum ada data!";
+$sql="select * from cash_view";
+$transq=$conn->query ( $sql );
+if($transq->num_rows == 0) {
+	$msg="Belum ada data!";
 } else {
 	?>
 <table id="data">
@@ -49,8 +58,8 @@ if ($transq->num_rows == 0) {
 	</thead>
 	<tbody>
 <?php
-	$line = 0;
-	while ( $transdata = $transq->fetch_assoc () ) {
+	$line=0;
+	while ( $transdata=$transq->fetch_assoc () ) {
 		$line ++;
 		?>
 		<tr

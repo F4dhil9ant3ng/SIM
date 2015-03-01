@@ -1,28 +1,28 @@
 <?php
 // file : cashflow.php
 // deskripsi : file untuk manajemen jenis aliran kas
-if (isset ( $_POST ['dele'] ) && isset ( $_POST ['flow_id'] )) { // hapus data
-	$msg = flow_del ( $conn );
+if(isset( $_POST['dele'] ) && isset( $_POST['flow_id'] )) { // hapus data
+	$msg=flow_del ( $conn );
 }
-if (isset ( $_POST ['tambah'] )) { // tambah data
-	$msg = flow_add ( $conn );
+if(isset( $_POST['tambah'] )) { // tambah data
+	$msg=flow_add ( $conn );
 }
-if (isset ( $_POST ['perbaiki'] )) { // / edit data
-	$msg = flow_edit ( $conn );
+if(isset( $_POST['perbaiki'] )) { // / edit data
+	$msg=flow_edit ( $conn );
 }
 
-if (isset ( $_POST ['edit'] ) && isset ( $_POST ['flow_id'] )) {
+if(isset( $_POST['edit'] ) && isset( $_POST['flow_id'] )) {
 	form_flow_edit ( $conn );
-} elseif (isset ( $_POST ['add'] )) {
+} elseif(isset( $_POST['add'] )) {
 	form_flow_add ( $conn );
 } else {
 	echo "<form method=\"post\"><input type=\"submit\" name=\"add\" value=\"Tambah\" id=\"addbutton\" ></form>";
 }
 
-$flowsql = "select * from cash_flow";
-$flowq = $conn->query ( $flowsql );
-if ($flowq->num_rows == 0) {
-	$msg = "Belum ada data!";
+$flowsql="select * from cash_flow";
+$flowq=$conn->query ( $flowsql );
+if($flowq->num_rows == 0) {
+	$msg="Belum ada data!";
 } else {
 	?>
 <table id="data">
@@ -37,8 +37,8 @@ if ($flowq->num_rows == 0) {
 	</thead>
 	<tbody>
 <?php
-	$line = 0;
-	while ( $flow = $flowq->fetch_assoc () ) {
+	$line=0;
+	while ( $flow=$flowq->fetch_assoc () ) {
 		$line ++;
 		?>
 		<tr
